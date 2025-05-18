@@ -1,0 +1,25 @@
+%% Group Members:
+%% 1. Ali Hassan
+%% 2. Abdul Raziq
+%% 3. Muhammad Areeb Hussain
+%% 4. Mahmoud Gohneim
+
+sequenceDiagram
+    title
+        Group Members: Ali Hassan, Abdul Raziq, Muhammad Areeb Hussain, Mahmoud Gohneim
+    
+    participant Student
+    participant NLUS
+    participant ExamAdmin as Exam Administration
+
+    Student ->> NLUS: Login (matriculation number, password)
+    NLUS -->> Student: Login confirmation
+
+    Student ->> NLUS: Register for exam (exam ID, TAN)
+    NLUS ->> ExamAdmin: Forward exam ID and TAN
+
+    ExamAdmin ->> ExamAdmin: Check TAN
+    ExamAdmin ->> ExamAdmin: Generate exam registration
+
+    ExamAdmin -->> NLUS: Send exam registration confirmation
+    NLUS -->> Student: Display exam registration

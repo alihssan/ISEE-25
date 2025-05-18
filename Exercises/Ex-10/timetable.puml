@@ -1,0 +1,49 @@
+' Group Members:
+' 1. Ali Hassan
+' 2. Abdul Raziq
+' 3. Muhammad Areeb Hussain
+' 4. Mahmoud Gohneim
+
+@startuml
+start
+
+header
+Group Members:
+1. Ali Hassan
+2. Abdul Raziq
+3. Muhammad Areeb Hussain
+4. Mahmoud Gohneim
+endheader
+
+:Login to LSF;
+:Search for suitable courses;
+:Check course times;
+
+if (Times overlap?) then (yes)
+  :Discard course;
+  if (Search for another course?) then (yes)
+    -> Search for suitable courses;
+  else
+    :Logout of LSF;
+    stop
+  endif
+else (no)
+  fork
+    :Enter course time;
+  fork again
+    :Enter lecturer;
+  fork again
+    :Enter room;
+  end fork
+
+  :Check current timetable;
+
+  if (Add more courses?) then (yes)
+    -> Search for suitable courses;
+  else
+    :Logout of LSF;
+    stop
+  endif
+endif
+
+@enduml

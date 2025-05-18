@@ -1,0 +1,22 @@
+%% Group Members:
+%% 1. Ali Hassan
+%% 2. Abdul Raziq
+%% 3. Muhammad Areeb Hussain
+%% 4. Mahmoud Gohneim
+
+sequenceDiagram
+    title
+    Group Members: Ali Hassan, Abdul Raziq, Muhammad Areeb Hussain, Mahmoud Gohneim
+    
+    participant Sensor
+    participant APOS
+    participant Wholesaler
+
+    Sensor ->> APOS: Warning of low stock (medicine ID)
+    APOS ->> APOS: Verify stock level (medicine ID)
+    APOS ->> Wholesaler: Send repeat order (medicine ID)
+    Wholesaler -->> APOS: Deliver order (medicine ID)
+    APOS ->> APOS: Verify received order matches medicine ID
+    APOS ->> Sensor: Notify arrival
+    Sensor -->> APOS: Confirm receipt
+    APOS ->> APOS: Delete repeat order

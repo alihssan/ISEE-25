@@ -1,0 +1,31 @@
+' Group Members:
+' 1. Ali Hassan
+' 2. Abdul Raziq
+' 3. Muhammad Areeb Hussain
+' 4. Mahmoud Gohneim
+
+@startuml
+title Traffic Light Control
+header
+Group Members:
+1. Ali Hassan
+2. Abdul Raziq
+3. Muhammad Areeb Hussain
+4. Mahmoud Gohneim
+endheader
+
+[*] --> Red
+
+Red --> RedOrange : Car detected\nWaited ≥ 2 min
+RedOrange --> Green : After 3 sec
+
+' Green stays green if cars keep arriving
+Green --> Green : Car crosses stop line\nExtend green time
+
+' Two different transitions to Orange
+Green --> Orange : Gap detected in traffic
+Green --> Orange : Green active ≥ 2 min
+
+Orange --> Red : After 3 sec
+
+@enduml

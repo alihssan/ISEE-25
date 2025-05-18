@@ -1,0 +1,60 @@
+' Group Members:
+' 1. Ali Hassan
+' 2. Abdul Raziq
+' 3. Muhammad Areeb Hussain
+' 4. Mahmoud Gohneim
+
+@startuml
+|Traveler|
+start
+
+header
+Group Members:
+1. Ali Hassan
+2. Abdul Raziq
+3. Muhammad Areeb Hussain
+4. Mahmoud Gohneim
+endheader
+
+:Go to baggage check-in;
+:Place suitcase on carousel;
+
+|Baggage Staff|
+:Weigh suitcase;
+
+|Traveler|
+if (Too heavy?) then (yes)
+  :Repack suitcase;
+  :Place suitcase again;
+
+  |Baggage Staff|
+  :Weigh suitcase again;
+
+  |Traveler|
+  if (Still too heavy?) then (yes)
+    if (Pay extra charge?) then (yes)
+      :Pay excess baggage fee;
+    else (no)
+      :Repack again;
+      :Place suitcase again;
+
+      |Baggage Staff|
+      :Weigh suitcase again;
+    endif
+  endif
+endif
+
+|Traveler|
+:Proceed to security check;
+:Hand in hand luggage;
+
+|Security Staff|
+:Check hand luggage;
+
+|Traveler|
+:Go through security gate;
+:Collect hand luggage;
+
+:Leave security area;
+stop
+@enduml

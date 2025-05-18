@@ -23,6 +23,7 @@ public class MonsterLoader {
       Float weight = null;
       Float multi = null;
       boolean isMonster = false;
+      int expectedField = 0; // 0: name, 1: maxHP, 2: attack, 3: weight, 4: multi
       
       while ((line = reader.readLine()) != null) {
         line = line.trim();
@@ -43,6 +44,7 @@ public class MonsterLoader {
           weight = null;
           multi = null;
           isMonster = true;
+          expectedField = 0;
           continue;
         }
         
@@ -53,6 +55,28 @@ public class MonsterLoader {
         
         String key = parts[0].toLowerCase();
         String value = parts[1].trim();
+        
+        // Check if the field is in the correct order
+        boolean isValidField = false;
+        switch (expectedField) {
+          case 0:
+            isValidField = key.equals("name");
+            break;
+          case 1:
+            isValidField = key.equals("maxhp");
+            break;
+          case 2:
+            isValidField = key.equals("attack");
+            break;
+          case 3:
+            isValidField = key.equals("weight");
+            break;
+          case 4:
+            isValidField = key.equals("multi");
+            break;
+        }
+        
+        if (!isValidField) continue;
         
         try {
           switch (key) {
@@ -72,9 +96,9 @@ public class MonsterLoader {
               multi = Float.parseFloat(value);
               break;
           }
+          expectedField++;
         } catch (NumberFormatException e) {
-          // Invalid number format, skip this monster
-          isMonster = false;
+          // Skip invalid number format
         }
       }
       
